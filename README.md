@@ -32,6 +32,28 @@ MartianBank is a microservices demo application that simulates an app to allow c
 
 <br />
 
+## Quick start (local)
+
+The fastest way to run Martian Bank on your machine:
+
+```bash
+./scripts/setup_local.sh --docker   # create .env files (Docker mode)
+./scripts/start_docker.sh           # docker compose up --build
+```
+
+Open http://localhost:3000 (UI) or http://localhost:8080 (via nginx).
+
+For native Mac development (local MongoDB + `scripts/run_local.sh`):
+
+```bash
+./scripts/setup_local.sh --native
+cd scripts && bash run_local.sh
+```
+
+See `.env.example` in each service folder and `.cursor/agents/martian-bank-local-dev.md` for troubleshooting.
+
+<br />
+
 #  Application Design
 
 The Martian Bank UI is created using [React](https://react.dev/) and [react-redux toolkit](https://redux-toolkit.js.org/). There is an [NGINX](https://www.nginx.com/) container that acts as a reverse proxy for UI and backend services. There are 6 microservices, out of which 2 (customer-auth and atm-locator) are developed in Node.js whereas the others are done using Flask (Python). The dashboard microservice talks to accounts, transactions and loan microservices using [gRPC](https://grpc.io/) and [http](https://en.wikipedia.org/wiki/HTTP) (can be flipped and is available as a deployment parameter).
@@ -417,10 +439,7 @@ cd martian-bank-demo
 
 2. Install mongodb locally and run it. Follow the steps here: https://www.mongodb.com/docs/manual/installation/
 
-3. Before you start with the MartianBank installation, ensure that you have `.env` files setup inside all the microservices. You need to create a `.env` file under these folders: `./customer-auth`, `./atm-locator`, `./dashboard`, `./accounts`, `./loan`, `./transactions`. Each `.env` file should look like this:
-```yaml
-DB_URL="your-database-connection-url"
-```
+3. Before you start with the MartianBank installation, ensure that you have `.env` files setup inside all the microservices. Run `./scripts/setup_local.sh --native` from the repo root (or copy each `.env.example` manually). You need a `.env` file under: `./customer-auth`, `./atm-locator`, `./dashboard`, `./accounts`, `./loan`, `./transactions`.
 
 4. To run all the microservices and UI:  
 ```bash
