@@ -4,6 +4,15 @@
  * license that can be found in the LICENSE file.
  */
 
+:root {
+    --mars-red: #BC2731;
+}
+
+.brand-mars-red {
+    color: var(--mars-red);
+    font-weight: lighter;
+}
+
 .custom-nav-dropdown .nav-link{
     color: white !important;
 }

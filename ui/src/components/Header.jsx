@@ -88,7 +88,7 @@ const Header = () => {
               />
               <span>
                 <strong>Martian </strong>
-                <span style={{ fontWeight: "lighter", color: "red" }}>Bank</span>
+                <span className="brand-mars-red">Bank</span>
               </span>
             </Navbar.Brand>
           </LinkContainer>
