@@ -15,10 +15,10 @@ import "../index.css";
 
 const CustomNavItems = ({ name, link }) => {
   return (
-    <Nav.Item style={{ marginRight: 20 }}>
+    <Nav.Item>
       <LinkContainer to={link}>
         <Nav.Link className="text-white">
-          <span style={{ fontSize: "2vh" }}>{name}</span>
+          {name}
         </Nav.Link>
       </LinkContainer>
     </Nav.Item>
@@ -73,108 +73,72 @@ const Header = () => {
     <header>
       <Navbar
         bg="dark"
-        varient="dark"
+        variant="dark"
         expand="lg"
         collapseOnSelect
-        style={{ height: "10vh" }}
+        className="navbar-martian"
       >
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand className="text-white text-uppercase">
+            <Navbar.Brand className="text-white text-uppercase d-flex align-items-center gap-2">
               <img
                 src="./src/assets/coin-front.png"
-                // src="https://via.placeholder.com/45x45"
                 alt="logo"
-                width="70vw"
-                height="auto"
+                className="navbar-logo"
               />
-              <strong style={{ fontSize: "4vh" }}>Martian </strong>
-              <span
-                style={{ fontSize: "4vh", fontWeight: "lighter", color: "red" }}
-              >
-                Bank
+              <span>
+                <strong>Martian </strong>
+                <span style={{ fontWeight: "lighter", color: "red" }}>Bank</span>
               </span>
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
+          <Navbar.Toggle aria-controls="martian-navbar-nav" />
+          <Navbar.Collapse id="martian-navbar-nav">
+            <Nav className="ms-auto align-items-lg-center gap-lg-3">
               {userInfo ? (
                 <>
                   <NavDropdown
                     title="Accounts"
                     id="accounts"
                     className="custom-nav-dropdown"
-                    style={{ fontSize: "2vh", marginRight: 30 }}
                   >
                     <LinkContainer to="/">
-                      <NavDropdown.Item>
-                        <span style={{ fontSize: "1.5vh" }}>My Accounts</span>
-                      </NavDropdown.Item>
+                      <NavDropdown.Item>My Accounts</NavDropdown.Item>
                     </LinkContainer>
                     <LinkContainer to="/new-account">
-                      <NavDropdown.Item>
-                        <span style={{ fontSize: "1.5vh" }}>New Account</span>
-                      </NavDropdown.Item>
+                      <NavDropdown.Item>New Account</NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
-                  <CustomNavItems
-                    style={{ marginRight: 30 }}
-                    name="Transfer"
-                    link="/transfer"
-                  />
-                  <CustomNavItems
-                    style={{ marginRight: 30 }}
-                    name="Transactions"
-                    link="/transactions"
-                  />
-                  <CustomNavItems
-                    style={{ marginRight: 30 }}
-                    name="Loans"
-                    link="/loan"
-                  />
-                  <CustomNavItems
-                    style={{ marginRight: 30 }}
-                    name="Find ATMs"
-                    link="/find-atm"
-                  />
+                  <CustomNavItems name="Transfer" link="/transfer" />
+                  <CustomNavItems name="Transactions" link="/transactions" />
+                  <CustomNavItems name="Loans" link="/loan" />
+                  <CustomNavItems name="Find ATMs" link="/find-atm" />
                   <NavDropdown
                     title={userInfo.name}
                     id="username"
                     className="custom-nav-dropdown"
-                    style={{ fontSize: "2vh" }}
                   >
                     <LinkContainer to="/profile">
-                      <NavDropdown.Item>
-                        <span style={{ fontSize: "1.5vh" }}>Personal Info</span>
-                      </NavDropdown.Item>
+                      <NavDropdown.Item>Personal Info</NavDropdown.Item>
                     </LinkContainer>
                     <LinkContainer to="/login">
                       <NavDropdown.Item onClick={logoutHandler}>
-                        <span style={{ fontSize: "1.5vh" }}>Logout</span>
+                        Logout
                       </NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
                 </>
               ) : (
                 <>
-                  <CustomNavItems
-                    style={{ marginRight: 20 }}
-                    name="Find ATMs"
-                    link="/find-atm"
-                  />
-                  <Nav.Item style={{ marginRight: 20 }}>
+                  <CustomNavItems name="Find ATMs" link="/find-atm" />
+                  <Nav.Item>
                     <LinkContainer to="/register">
-                      <Nav.Link className="text-white">
-                        <span style={{ fontSize: "2vh" }}>Signup</span>
-                      </Nav.Link>
+                      <Nav.Link className="text-white">Signup</Nav.Link>
                     </LinkContainer>
                   </Nav.Item>
-                  <Nav.Item style={{ marginRight: 40 }}>
+                  <Nav.Item>
                     <LinkContainer to="/login">
-                      <Nav.Link className="text-white">
-                        <span style={{ fontSize: "2vh" }}>Login</span>
-                      </Nav.Link>
+                      <Nav.Link className="text-white">Login</Nav.Link>
                     </LinkContainer>
                   </Nav.Item>
                 </>

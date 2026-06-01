@@ -34,7 +34,16 @@ MartianBank is a microservices demo application that simulates an app to allow c
 
 ## Quick start (local)
 
-The fastest way to run Martian Bank on your machine:
+**Native Mac (recommended when Docker is unavailable):**
+
+```bash
+brew install mongodb/brew/mongodb-community@8.0   # once
+./scripts/start_native.sh
+```
+
+Open http://localhost:3000
+
+**Docker Compose:**
 
 ```bash
 ./scripts/setup_local.sh --docker   # create .env files (Docker mode)
@@ -43,12 +52,9 @@ The fastest way to run Martian Bank on your machine:
 
 Open http://localhost:3000 (UI) or http://localhost:8080 (via nginx).
 
-For native Mac development (local MongoDB + `scripts/run_local.sh`):
+> **macOS note:** AirPlay Receiver uses port 5000. Native startup uses dashboard on **5002** automatically.
 
-```bash
-./scripts/setup_local.sh --native
-cd scripts && bash run_local.sh
-```
+Stop native services: `./scripts/stop_native.sh`
 
 See `.env.example` in each service folder and `.cursor/agents/martian-bank-local-dev.md` for troubleshooting.
 

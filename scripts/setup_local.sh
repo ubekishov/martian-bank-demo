@@ -92,6 +92,12 @@ apply_mode() {
       sed -i.bak '/^DB_URL=/d' "$target" && rm -f "$target.bak"
       ;;
     dashboard)
+      local dashboard_port=5002
+      if lsof -iTCP:5000 -sTCP:LISTEN >/dev/null 2>&1; then
+        dashboard_port=5002
+      else
+        dashboard_port=5000
+      fi
       sed -i.bak \
         -e 's|^DB_URL=.*|DB_URL=mongodb://localhost:27017|' \
         -e 's|^ACCOUNT_HOST=.*|ACCOUNT_HOST=localhost|' \
@@ -99,7 +105,22 @@ apply_mode() {
         -e 's|^LOAN_HOST=.*|LOAN_HOST=localhost|' \
         -e 's|^CUSTOMER_AUTH_HOST=.*|CUSTOMER_AUTH_HOST=localhost|' \
         -e 's|^ATM_LOCATOR_HOST=.*|ATM_LOCATOR_HOST=localhost|' \
+        -e "s|^PORT=.*|PORT=$dashboard_port|" \
         "$target" && rm -f "$target.bak"
+      if ! grep -q '^PORT=' "$target"; then
+        echo "PORT=$dashboard_port" >> "$target"
+      fi
+      ;;
+    ui)
+      local dashboard_port=5002
+      if ! lsof -iTCP:5000 -sTCP:LISTEN >/dev/null 2>&1; then
+        dashboard_port=5000
+      fi
+      cat > "$target" <<EOF
+VITE_ACCOUNTS_URL=http://127.0.0.1:$dashboard_port/account/
+VITE_TRANSFER_URL=http://127.0.0.1:$dashboard_port/transaction/
+VITE_LOAN_URL=http://127.0.0.1:$dashboard_port/loan/
+EOF
       ;;
     accounts|transactions|loan)
       sed -i.bak 's|^DB_URL=.*|DB_URL=mongodb://localhost:27017|' "$target" && rm -f "$target.bak"
@@ -137,10 +158,10 @@ else
 Next steps (native Mac):
   1. Start MongoDB locally (https://www.mongodb.com/docs/manual/installation/)
   2. Run all services:
-       cd scripts && bash run_local.sh
+       ./scripts/start_native.sh
   3. Open http://localhost:3000
 
 To stop native services:
-       cd scripts && bash stop_local.sh
+       ./scripts/stop_native.sh
 EOF
 fi

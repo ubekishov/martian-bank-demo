@@ -1,5 +1,6 @@
-# Logs
-logs
+# Logs and local runtime
+logs/
+.pids/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,27 +8,54 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-venv_bankapp
-dist
-dist-ssr
-*.local
-.DS_Store
+# Dependencies
+node_modules/
 
-# Editor directories and files
+# Python
+venv_bankapp/
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# Environment (keep examples committed)
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors and IDE
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-*.env
 
-__pycache__
+# Cursor IDE (ignore local state; keep shareable project agents)
+.cursor/*
+!.cursor/agents/
+!.cursor/agents/**
 
+# Repo-specific scripts (local/dev only)
 docker-hub.sh
 dockers_images_update.sh
 

@@ -19,17 +19,16 @@
       body {
         margin: 0;
         padding: 0;
-        background-image: radial-gradient(
-            circle,
-            rgba(0, 0, 0, 0.1),
-            rgba(0, 0, 0, 0.1)
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.25)
           ),
-          url(./src/assets/bank-background.png);
-          /* url("https://via.placeholder.com/400x400"); */
-        background-size: 100% auto;
-        background-position: center;
-        background-repeat: repeat-y;
-        opacity: 1;
+          url(./src/assets/mars-rover-background.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
       }
 
       #root{
