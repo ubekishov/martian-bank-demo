@@ -4,8 +4,91 @@
  * license that can be found in the LICENSE file.
  */
 
+:root {
+    --mars-red: #BC2731;
+}
+
+.brand-mars-red {
+    color: var(--mars-red);
+    font-weight: lighter;
+}
+
 .custom-nav-dropdown .nav-link{
     color: white !important;
+}
+
+.navbar-martian {
+    min-height: 4rem;
+}
+
+.navbar-martian .navbar-brand {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    max-width: calc(100% - 3.5rem);
+}
+
+.navbar-martian .navbar-logo {
+    width: 2.75rem;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.navbar-martian .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.75);
+    padding: 0.375rem 0.625rem;
+}
+
+.navbar-martian .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.95%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-martian .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+.navbar-martian .navbar-collapse {
+    flex-grow: 1;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-martian .navbar-collapse {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .navbar-martian .navbar-nav {
+        gap: 0.25rem;
+    }
+
+    .navbar-martian .nav-item,
+    .navbar-martian .nav-link,
+    .navbar-martian .dropdown-toggle {
+        width: 100%;
+    }
+
+    .navbar-martian .nav-link {
+        padding: 0.5rem 0;
+    }
+}
+
+.hero-card {
+    width: 100%;
+    max-width: 56rem;
+}
+
+.hero-card .hero-actions {
+    width: 100%;
+    max-width: 24rem;
+}
+
+.hero-card .hero-actions .btn {
+    min-width: 8rem;
+}
+
+@media (max-width: 575.98px) {
+    .hero-card .hero-actions .btn {
+        width: 100%;
+    }
 }
 
 .leaflet-container {
@@ -23,4 +106,52 @@ body {
     background-color: #212529;
 }
 
-  
+.auth-page-row {
+    margin-top: clamp(1.5rem, 5vh, 3rem);
+}
+
+.auth-form-column {
+    width: 100%;
+    min-width: 0;
+}
+
+.auth-form-card {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.auth-form-card .form-control {
+    width: 100%;
+    min-width: 0;
+}
+
+.auth-form-card .form-text {
+    font-size: 0.875rem;
+}
+
+.auth-form-card .auth-footer-text {
+    font-size: 0.875rem;
+}
+
+.auth-promo-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (min-width: 992px) {
+    .auth-form-column {
+        max-width: 28rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .auth-page-row {
+        min-height: 32rem;
+    }
+
+    .auth-form-column {
+        max-width: none;
+    }
+}
